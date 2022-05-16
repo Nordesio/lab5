@@ -16,30 +16,30 @@ import java.sql.Time;
 public class Shedule {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id_shedule")
+    @Column(name = "shedule_id")
     private int id;
 
-    @Column(name = "day")
+    @Column(name = "date_s")
     private String day;
 
     @Column(name = "number")
     private int number;
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name="id_group")
+    @JoinColumn(name="groupp_id")
     private Group group;
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name="id_discipline")
+    @JoinColumn(name="discipline_id")
     private Discipline discipline;
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name="id_teacher")
+    @JoinColumn(name="teacher_id")
     private Teacher teacher;
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name="id_auditorium")
+    @JoinColumn(name="auditorium_id")
     private Auditorium auditorium;
 
-    @Column(name = "time")
+    @Column(name = "time_s")
     private String time;
 
     public Shedule (String day, int number, Group group, Discipline discipline, Teacher teacher, Auditorium auditorium, String time) {
@@ -51,7 +51,6 @@ public class Shedule {
         this.auditorium = auditorium;
         this.time = time;
     }
-
     @Override
     public String toString() {
         return "Shedule {" +

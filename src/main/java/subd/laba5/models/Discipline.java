@@ -14,7 +14,7 @@ import java.sql.Date;
 public class Discipline {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id_discipline")
+    @Column(name = "discipline_id")
     private int id;
 
     @Column(name = "name")
@@ -24,7 +24,6 @@ public class Discipline {
     public Discipline(String name){
         this.name = name;
     }
-
     @Override
     public String toString() {
         return "Discipline {" +

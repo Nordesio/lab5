@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table(name = "group", schema = "public", catalog = "test")
+@Table(name = "groupp", schema = "public", catalog = "test")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -15,7 +15,7 @@ import java.sql.Date;
 public class Group {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id_group")
+    @Column(name = "groupp_id")
     private int id;
 
     @Column(name = "year")
@@ -30,7 +30,6 @@ public class Group {
         this.name = name;
         this.amount = amount;
     }
-
     @Override
     public String toString() {
         return "Group {" +

@@ -4,7 +4,6 @@ import lombok.NoArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
-import java.sql.Date;
 
 @Entity
 @Table(name = "auditorium", schema = "public", catalog = "test")
@@ -15,32 +14,33 @@ import java.sql.Date;
 public class Auditorium {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id_auditorium")
+    @Column(name = "auditorium_id")
     private int id;
 
     @Column(name = "seat")
     private int seat;
 
+    @ManyToOne(optional = false, cascade = {CascadeType.REFRESH, CascadeType.PERSIST})
+    @JoinColumn(name="auditoriumtype_id")
+    private Auditoriumtype auditoriumtype;
+
     @Column(name = "cabinet")
     private String cabinet;
 
-    @ManyToOne(optional = false, cascade = {CascadeType.REFRESH, CascadeType.PERSIST})
-    @JoinColumn(name="id_auditorium_type")
-    private Auditorium_type auditorium_type;
 
-    public Auditorium (int seat, String cabinet, Auditorium_type auditorium_type){
+
+    public Auditorium (int seat, Auditoriumtype auditoriumtype, String cabinet){
         this.seat = seat;
+        this.auditoriumtype = auditoriumtype;
         this.cabinet = cabinet;
-        this.auditorium_type = auditorium_type;
     }
-
     @Override
     public String toString() {
         return "Auditorium {" +
                 "id= " + id +
                 "seat='" + seat + '\'' +
+                "auditoriumtype_id='" + auditoriumtype.getId() + '\'' +
                 "cabinet='" + cabinet + '\'' +
-                "auditorium_type_id='" + auditorium_type.getId() + '\'' +
                 "}" + "\n";
     }
 

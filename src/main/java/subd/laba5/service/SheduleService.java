@@ -71,8 +71,8 @@ public class SheduleService {
     }
 
     private void Read(Session session) {
-        List<Auditorium> auditoriums = session.createQuery("SELECT a from Auditorium a", Auditorium.class).getResultList();
-        System.out.println(auditoriums);
+        List<Shedule> shedules = session.createQuery("SELECT s from Shedule s", Shedule.class).getResultList();
+        System.out.println(shedules);
     }
 
     private void Update(Session session) {
@@ -127,9 +127,9 @@ public class SheduleService {
     private void Filter(Session session) {
         try {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Input group of shedule:");
+            System.out.println("Input group id of shedule:");
             int group = scanner.nextInt();
-            List<Shedule> shedules = session.createQuery("SELECT s from Shedule s WHERE seat = \'" + group + "\'", Shedule.class).getResultList();
+            List<Shedule> shedules = session.createQuery("SELECT s from Shedule s WHERE groupp_id = \'" + group + "\'", Shedule.class).getResultList();
             System.out.println(shedules);
         }
         catch (Exception ex){

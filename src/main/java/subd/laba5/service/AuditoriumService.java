@@ -2,7 +2,7 @@ package subd.laba5.service;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import subd.laba5.models.Auditorium;
-import subd.laba5.models.Auditorium_type;
+import subd.laba5.models.Auditoriumtype;
 
 import java.util.List;
 import java.util.Scanner;
@@ -52,7 +52,7 @@ public class AuditoriumService {
             String cabinet  = scanner.next();
             System.out.println("Input id of auditorium type");
             int auditorium_type_id = scanner.nextInt();
-            Auditorium auditorium = new Auditorium(seat, cabinet, session.get(Auditorium_type.class, auditorium_type_id));
+            Auditorium auditorium = new Auditorium(seat, session.get(Auditoriumtype.class, auditorium_type_id),cabinet );
             session.save(auditorium);
         }
         catch (Exception ex){
@@ -80,7 +80,7 @@ public class AuditoriumService {
             Auditorium auditorium = session.get(Auditorium.class, id);
             auditorium.setSeat(seat);
             auditorium.setCabinet(cabinet);
-            auditorium.setAuditorium_type(session.get(Auditorium_type.class, auditorium_type_id));
+            auditorium.setAuditoriumtype(session.get(Auditoriumtype.class, auditorium_type_id));
             session.save(auditorium);
         }
         catch (Exception ex){

@@ -15,7 +15,7 @@ import java.sql.Date;
 public class Teacher {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id_teacher")
+    @Column(name = "teacher_id")
     private int id;
 
     @Column(name = "name")

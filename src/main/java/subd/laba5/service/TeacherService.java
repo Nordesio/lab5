@@ -56,7 +56,7 @@ public class TeacherService {
     }
 
     private void Read(Session session) {
-        List<Teacher> teachers = session.createQuery("SELECT t from Teacher d", Teacher.class).getResultList();
+        List<Teacher> teachers = session.createQuery("SELECT t from Teacher t", Teacher.class).getResultList();
         System.out.println(teachers);
     }
 

@@ -3,7 +3,7 @@ package subd.laba5.service;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import subd.laba5.models.Auditorium_type;
+import subd.laba5.models.Auditoriumtype;
 
 import java.util.List;
 import java.util.Scanner;
@@ -48,10 +48,10 @@ public class AuditoriumTypeService {
     private void Create(Session session) {
         try {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Input Name:");
-            String name = scanner.next();
-            Auditorium_type auditorium_type = new Auditorium_type(name);
-            session.save(auditorium_type);
+            System.out.println("Input Type:");
+            String type_a = scanner.next();
+            Auditoriumtype auditoriumtype = new Auditoriumtype(type_a);
+            session.save(auditoriumtype);
         }
         catch (Exception ex){
             System.out.println(ex);
@@ -60,22 +60,22 @@ public class AuditoriumTypeService {
     }
 
     private void Read(Session session) {
-        List<Auditorium_type> auditorium_types = session.createQuery("SELECT a from Auditorium_type a", Auditorium_type.class).getResultList();
-        System.out.println(auditorium_types);
+        List<Auditoriumtype> auditoriumtypes = session.createQuery("SELECT a from Auditoriumtype a", Auditoriumtype.class).getResultList();
+        System.out.println(auditoriumtypes);
     }
 
     private void Update(Session session) {
         try {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Input id of auditorium_type:");
+            System.out.println("Input id of auditoriumtype:");
             int id = scanner.nextInt();
 
-            System.out.println("Input Name:");
-            String name  = scanner.next();
+            System.out.println("Input Type:");
+            String type_a  = scanner.next();
 
-            Auditorium_type auditorium_type = session.get(Auditorium_type.class, id);
-            auditorium_type.setName(name);
-            session.save(auditorium_type);
+            Auditoriumtype auditoriumtype = session.get(Auditoriumtype.class, id);
+            auditoriumtype.setType_a(type_a);
+            session.save(auditoriumtype);
         }
         catch (Exception ex){
             System.out.println(ex);
@@ -86,10 +86,10 @@ public class AuditoriumTypeService {
     private void Delete(Session session) {
         try {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Input id of auditorium_type:");
+            System.out.println("Input id of auditoriumtype:");
             int id = scanner.nextInt();
-            Auditorium_type auditorium_type = session.get(Auditorium_type.class, id);
-            session.delete(auditorium_type);
+            Auditoriumtype auditoriumtype = session.get(Auditoriumtype.class, id);
+            session.delete(auditoriumtype);
         }
         catch (Exception ex){
             System.out.println(ex);
@@ -102,8 +102,8 @@ public class AuditoriumTypeService {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Input name of auditorium_type:");
             String  names = scanner.next();
-            List<Auditorium_type> auditorium_types = session.createQuery("SELECT a from Auditorium_type a WHERE name = \'" + names+ "\'", Auditorium_type.class).getResultList();
-            System.out.println(auditorium_types);
+            List<Auditoriumtype> auditoriumtypes = session.createQuery("SELECT a from Auditoriumtype a WHERE type_a = \'" + names+ "\'", Auditoriumtype.class).getResultList();
+            System.out.println(auditoriumtypes);
         }
         catch (Exception ex){
             System.out.println(ex);
