@@ -17,7 +17,9 @@ import java.util.Objects;
 @Setter
 public class Auditoriumtype {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "serial_au_type")
+    @SequenceGenerator(name="serial_au_type", sequenceName = "serial_au_type", allocationSize = 1)
+
     @Column(name = "auditoriumtype_id")
     private int id;
 

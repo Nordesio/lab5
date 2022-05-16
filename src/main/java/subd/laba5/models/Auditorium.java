@@ -12,7 +12,8 @@ import javax.persistence.*;
 @Getter
 @Setter
 public class Auditorium {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "serial_aud")
+    @SequenceGenerator(name="serial_aud", sequenceName = "serial_aud", allocationSize = 1)
     @Id
     @Column(name = "auditorium_id")
     private int id;

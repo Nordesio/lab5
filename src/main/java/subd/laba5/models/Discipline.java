@@ -12,7 +12,8 @@ import java.sql.Date;
 @Getter
 @Setter
 public class Discipline {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "serial_ds")
+    @SequenceGenerator(name="serial_ds", sequenceName = "serial_ds", allocationSize = 1)
     @Id
     @Column(name = "discipline_id")
     private int id;

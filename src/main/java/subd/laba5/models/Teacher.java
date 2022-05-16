@@ -13,7 +13,8 @@ import java.sql.Date;
 @Getter
 @Setter
 public class Teacher {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "serial_t")
+    @SequenceGenerator(name="serial_t", sequenceName = "serial_t", allocationSize = 1)
     @Id
     @Column(name = "teacher_id")
     private int id;

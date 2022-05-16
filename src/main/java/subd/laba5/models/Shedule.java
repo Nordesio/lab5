@@ -14,7 +14,8 @@ import java.sql.Time;
 @Getter
 @Setter
 public class Shedule {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "serial_sh")
+    @SequenceGenerator(name="serial_sh", sequenceName = "serial_sh", allocationSize = 1)
     @Id
     @Column(name = "shedule_id")
     private int id;
